@@ -5,23 +5,110 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --green: #4BB543;
+  --red: #FF0000;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.layout {
+  background: var(--green);;
+  border-radius: 10px;
+  color: var(--background);
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+  font-weight: 600;
+  justify-content: center;
+  height: 12vh;
+  text-align: center;
+  width: 14vw;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust as needed */
+  grid-gap: 16px; /* Add spacing between items */
+  justify-content: center;
+  align-content: center; /* Vertically center grid items */
+  min-height: 60vh; /* Make the container take full viewport height */
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh; /* Ensure it covers the full height of the viewport */
+}
+
+@media (min-width: 768px) {
+  .grid-layout {
+    grid-template-columns: repeat(3, 1fr); /* Three items per row on larger screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-layout {
+    grid-template-columns: repeat(4, 1fr); /* Four items per row on extra-large screens */
+  }
+}
+
+
+.breadcrumb {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+.breadcrumb-item {
+  margin-right: 0.5rem;
+}
+.breadcrumb-item::after {
+  content: '/';
+  margin-left: 0.5rem;
+}
+.breadcrumb-item:last-child::after {
+  content: '';
+}
+
+
+.border-black {
+  border: 2px solid black;
+}
+
+.text-lg {
+  font-size: larger;
+}
+
+.box-layout {
+  width: 14vw;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.m-1 {
+  margin: 0px 1vw;
+}
+
+.inline {
+  display: inline-block;
 }

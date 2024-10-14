@@ -6,6 +6,7 @@ import {
   DialogTitle
 } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
 import { useEffect, useState } from "react";
 // import { useDispatch  } from 'react-redux'
 
@@ -31,7 +32,19 @@ export default function AssignDialog({ show, onDialogClose, shop, brandId, layou
 
   const handleAssignUser = () => {
     // dispatch(assignUser(brandId, layoutId, shop, user));
-    handleClose();
+
+    // handleClose();
+
+    // console.log(value);
+    let data = { content: value };
+    axios
+      .post("/api/assignUser", data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   return (

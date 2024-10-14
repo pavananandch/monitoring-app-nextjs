@@ -3,9 +3,19 @@ import Image from "next/image";
 import ladsLogo from "@/public/Ladbrokes.png";
 import coralLogo from "@/public/Coral.png";
 import { response } from "@/public/mock";
+import axios from "axios";
 
 export default function Dashboard() {
   const { brands } = response;
+
+  axios
+      .get("/api/getBrands")
+      .then((res) => {
+        console.log({res});
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   const redShops = brands.flatMap((brand) =>
     brand.screenLayouts.flatMap((screenLayout) =>
       screenLayout.shops
